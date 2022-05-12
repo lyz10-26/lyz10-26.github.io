@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+
+    <meta name="format-detection" content="telephone=no">
+    <title>元旦快乐</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+            font-size: 25px;
+            color: #FFF;
+            font-family: "微软雅黑";
+            background: #f3961c;
+        }
+
+        div {
+            text-align: left;
+        }
+
+        .tittle {
+            width: 100%;
+            background: #f3961c;
+            top: 0px;
+            height: 100%;
+            z-index: 0;
+            position: absolute;
+            position: fixed !important;
+            display: none;
+            cursor: default;
+        }
+
+        .big {
+            font-family: "微软雅黑";
+            color: #FFF;
+            font-size: 35px;
+        }
+
+        .tishi {
+            position: absolute;
+            position: fixed !important;
+            z-index: 99;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .tishiContent {
+            border: 1px solid #FFF;
+            font-size: 18px;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    <script type="text/javascript" src="./jscss/jquery.min.js"></script>
+    <script>
+        $(document).ready(function (e) {
+            $(document).scrollTop(300);
+            /*移动滚动条到最下方*/
+            timer = setInterval("$.change()", 3000);
+            t = 2;
+            $("#t-" + t).fadeIn();
+            $(document).click(
+                function () {
+                    /*如果用户点击了，就取消自动播放*/
+                    clearInterval(timer);
+                    $.change();
+                }
+            );
+
+            /*切换*/
+            $.change = function () {
+                t++;
+                if (t <= $(".tittle").length) {
+                    $(".tittle").slideUp(1500).fadeOut();
+                    $("#t-" + t).slideDown(1500).fadeIn();
+                } else {
+                    localStorage["index"] = "1";
+                    window.location = "4.html";
+                }
+            }
+        });
+
+
+        setInterval(function () {
+            document.getElementById("time").innerHTML = new Date().toLocaleString();
+        }, 1000)
+
+    </script>
+
+</head>
+
+<body>
+
+    <section style="text-align: center">
+        <div class="tittle" id="t-1" style="display: none;">
+
+        </div>
+
+        <div class="tittle" id="t-2" style="display: block;">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;"><span id="time">今天是：</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tittle" id="t-3">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">嘿！<span class="big">那个谁·······</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-4">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">对，没错！<span class="big">就是你！！</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-5">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">我想对你··<span class="big">说</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="tittle" id="t-6">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">天王
+                            <span class="big">盖地虎</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-7">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">宝塔
+                            <span class="big">镇河妖</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-8">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">左青龙
+                            <span class="big">右白虎</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-9">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">前朱雀
+                            <span class="big">后玄武</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-10">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">天空很蓝
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-11">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">地域
+                            <span class="big">无疆</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-12">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;"><br>我想告诉你<span class="big">你其实。。</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tittle" id="t-13">
+            <table width="100%" height="100%">
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;"><br>是个.....<span class="big">憨憨， 哈哈哈!!!</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <div style="text-align: center;" class="tishi">
+        <span class="tishiContent">点击或者滑动鼠标屏幕继续</span>
+    </div>
+</body>
+
+</html>
