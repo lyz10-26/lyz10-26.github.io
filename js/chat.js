@@ -50,7 +50,7 @@ $(function () {
         text: text
       },
       success: function (res) {
-        // console.log(res)
+        console.log(res)
         if (res.status === 200) {
           // 播放语音
           $('#voice').attr('src', res.voiceUrl)
