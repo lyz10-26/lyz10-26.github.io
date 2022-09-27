@@ -7,9 +7,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+        <script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="jquery-ui.min.js"></script>
+        <script type="text/javascript" src="jquery.mousewheel.js"></script>
         <title>聊天机器人</title>
         <style>
             body,
@@ -160,7 +160,7 @@
                 top: 3px;
                 width: 13px;
                 height: 12px;
-                background: url('img/corner01.png') no-repeat;
+                background: url('corner01.png') no-repeat;
             }
 
             .talk_list .right_word img {
@@ -188,7 +188,7 @@
                 top: 3px;
                 width: 13px;
                 height: 12px;
-                background: url('img/corner02.png') no-repeat;
+                background: url('corner02.png') no-repeat;
             }
 
             .drag_bar {
@@ -261,16 +261,16 @@
             <!-- 头部 Header 区域 -->
             <div class="header">
                 <h3>小思同学</h3>
-                <img src="img/person03.png" alt="icon" />
+                <img src="person03.png" alt="icon" />
             </div>
             <!-- 中间 聊天内容区域 -->
             <div class="main">
                 <ul class="talk_list" style="top: 0px;" id="talk_list">
                     <li class="left_word">
-                        <img src="img/person03.png" /> <span>嗨，最近想我没有？</span>
+                        <img src="person03.png" /> <span>嗨，最近想我没有？</span>
                     </li>
                     <!-- <li class="right_word">
-            <img src="img/person02.png" /> <span>你好哦</span>
+            <img src="person02.png" /> <span>你好哦</span>
           </li> -->
                 </ul>
                 <div class="drag_bar" style="display: none;">
@@ -280,15 +280,15 @@
             </div>
             <!-- 底部 消息编辑区域 -->
             <div class="footer">
-                <img src="img/person03.png" alt="icon" />
+                <img src="person03.png" alt="icon" />
                 <input type="text" placeholder="说点什么吧..." class="input_txt" id="ipt" />
                 <input type="button" value="发 送" class="input_sub" id="btnSend" />
             </div>
         </div>
         <!-- 注意：只要为 audio 指定了新的 src 属性，而且指定了 autoplay，那么，语音就会自动播放 -->
         <audio src="" id="voice" autoplay style="display: none;"></audio>
-        <script type="text/javascript" src="js/scroll.js"></script>
-        <script src="js/chat.js"></script>
+        <script type="text/javascript" src="scroll.js"></script>
+        <script src="chat.js"></script>
     </body>
 
     </html>
