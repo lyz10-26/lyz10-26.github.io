@@ -1123,7 +1123,7 @@ void main(void) {
         var animating = true;
         function toggleAnimation(elm) {
             animating ^= true;
-            if (animating) animate();
+            if (animating && !document.hidden) requestAnimationFrame(animate);
             if (elm) {
                 elm.innerHTML = animating ? "Stop" : "Start";
             }
