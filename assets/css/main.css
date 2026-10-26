@@ -2,8 +2,8 @@
 此源码是基于 Dimension 的二次修改
 Github：https://github.com/nianbroken/Personal_Sakura_Guide_Page
 */
-@import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
+/* Icon font stylesheet is linked directly in HTML to avoid CSS import chaining. */
+/* Web font stylesheet is loaded in HTML with preconnect and font-display: swap. */
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,

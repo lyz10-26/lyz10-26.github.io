@@ -7,6 +7,10 @@
     <meta http-equiv="content-language" content="zh-cn" />
     <link rel="shortcut icon" href="images/picture.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600&display=swap" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css" />
@@ -19,7 +23,7 @@
         <!-- Header -->
         <header id="header">
             <div class="icon">
-                <img src="images/touxiang.png" alt="π起始页" title="LYZ个人网站" class="logo" />
+                <img decoding="async" fetchpriority="high" src="images/touxiang.png" alt="π起始页" title="LYZ个人网站" class="logo" />
             </div>
             <div class="content">
                 <div class="inner">
@@ -42,8 +46,7 @@
         <!-- Footer -->
         <footer id="footer">
             <p class="copyright">您的IP：
-                <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-                <script type="text/javascript">document.write(returnCitySN["cip"]) </script>
+                <span id="visitor-ip">查询中</span>
             </p>
             <p class="copyright">
                 <script>
@@ -60,6 +63,19 @@
     height: 100vh;
     width: 100vw;">
     </canvas>
+    <script>
+        window.addEventListener('load', function () {
+            var el = document.getElementById('visitor-ip');
+            var script = document.createElement('script');
+            script.src = 'https://pv.sohu.com/cityjson?ie=utf-8';
+            script.async = true;
+            script.onload = function () {
+                el.textContent = (window.returnCitySN && window.returnCitySN.cip) || '暂不可用';
+            };
+            script.onerror = function () { el.textContent = '暂不可用'; };
+            document.head.appendChild(script);
+        });
+    </script>
     <!-- BG -->
     <!-- <div id="bg"> -->
     <!-- Scripts -->
@@ -1108,31 +1124,36 @@ void main(void) {
         var animating = true;
         function toggleAnimation(elm) {
             animating ^= true;
-            if (animating) animate();
+            if (animating && !document.hidden) requestAnimationFrame(animate);
             if (elm) {
                 elm.innerHTML = animating ? "Stop" : "Start";
             }
         }
 
         function stepAnimation() {
-            if (!animating) animate();
+            if (!animating) render();
         }
 
-        function animate() {
+        var lastFrameTime = 0;
+        var frameInterval = 1000 / (window.matchMedia('(max-width: 736px)').matches ? 30 : 60);
+        function animate(timestamp) {
+            if (!animating || document.hidden) return;
+            requestAnimationFrame(animate);
+            if (timestamp - lastFrameTime < frameInterval) return;
+            lastFrameTime = timestamp;
             var curdate = new Date();
             timeInfo.elapsed = (curdate - timeInfo.start) / 1000.0;
             timeInfo.delta = (curdate - timeInfo.prev) / 1000.0;
             timeInfo.prev = curdate;
 
-            if (animating) requestAnimationFrame(animate);
             render();
         }
 
         function makeCanvasFullScreen(canvas) {
             var b = document.body;
             var d = document.documentElement;
-            fullw = Math.max(b.clientWidth, b.scrollWidth, d.scrollWidth, d.clientWidth);
-            fullh = Math.max(b.clientHeight, b.scrollHeight, d.scrollHeight, d.clientHeight);
+            fullw = window.innerWidth || d.clientWidth;
+            fullh = window.innerHeight || d.clientHeight;
             canvas.width = fullw;
             canvas.height = fullh;
         }
@@ -1156,7 +1177,19 @@ void main(void) {
 
             timeInfo.start = new Date();
             timeInfo.prev = timeInfo.start;
-            animate();
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                animating = false;
+                render();
+            } else {
+                requestAnimationFrame(animate);
+            }
+            document.addEventListener('visibilitychange', function () {
+                if (!document.hidden && animating) {
+                    timeInfo.prev = new Date();
+                    lastFrameTime = 0;
+                    requestAnimationFrame(animate);
+                }
+            });
         });
 
         //set window.requestAnimationFrame
